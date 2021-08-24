@@ -1,10 +1,10 @@
-#N canvas 0 61 1920 994 12;
+#N canvas 2 1112 1916 994 12;
 #X obj -90 240 cnv 15 100 60 empty empty empty 20 12 0 14 #881919 #404040
 0;
 #X obj 121 151 *~;
 #X obj 121 62 delread~ mybuf 1000;
 #X obj 300 -30 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 12700 1;
+#000000 #000000 0 1;
 #X obj 300 112 / 127;
 #X floatatom 0 50 5 0 0 0 - - -, f 5;
 #X obj 120 500 delwrite~ mybuf;
@@ -12,7 +12,7 @@
 #X obj 670 200 adc~;
 #X obj 912 200 noise~;
 #X obj 620 0 vradio 15 1 0 8 empty empty empty 0 -8 0 10 #fcfcfc #000000
-#000000 5;
+#000000 0;
 #X obj 1068 200 pink~;
 #X obj 1175 102 osc~ 1000;
 #X obj 1225 151 *~;
@@ -24,30 +24,28 @@
 #X obj 1237 -26 key;
 #X obj 1237 3 sel 32;
 #X obj 0 -180 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 5150 1;
+#000000 #000000 0 1;
 #X obj 0 -38 / 127;
 #X floatatom 1175 72 5 0 0 0 - - -, f 5;
 #X obj 599 255 mux~ . . . . . . . ., f 157;
-#X obj 1381 150 ../impulse1 0.9;
 #X obj 1381 -32 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 1700 1;
+#000000 #000000 0 1;
 #X obj 1538 -42 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 1800 1;
-#X obj 1538 140 ../impulse2 10;
+#000000 #000000 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array array2 1000 float 0 black black;
 #X coords 0 1 999 -1 200 140 1;
 #X restore 560 560 graph;
 #X obj 240 360 tabwrite~ array2;
 #X obj 240 310 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#000000 0 1;
 #X obj 240 334 metro 100;
 #X obj 120 440 clip~ -0.3 0.3;
-#X obj 1633 -43 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 4100 1;
-#X obj 1483 -32 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 12300 1;
-#X obj 1483 110 / 127;
+#X obj 1612 -42 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 1462 -32 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 1462 110 / 127;
 #X obj 1381 110 mtof;
 #X obj 1538 100 mtof;
 #X obj 0 20 * 500;
@@ -69,14 +67,16 @@ delay and feedback amplitude \, and store it into the same buffer.
 #X text 635 72 impulse train #1;
 #X text 635 87 impulse train #2;
 #X text 1380 -60 f0;
-#X text 1470 -60 index;
+#X text 1449 -60 index;
 #X text 1540 -70 f0;
-#X text 1630 -70 index;
+#X text 1609 -69 index;
 #X msg 1300 90 5 2 10 5;
-#X connect 1 0 32 0;
+#X obj 1381 150 impulse1 0.9;
+#X obj 1538 140 impulse2 10;
+#X connect 1 0 30 0;
 #X connect 2 0 1 0;
-#X connect 2 0 47 0;
-#X connect 2 0 29 0;
+#X connect 2 0 45 0;
+#X connect 2 0 27 0;
 #X connect 3 0 4 0;
 #X connect 4 0 1 1;
 #X connect 5 0 2 0;
@@ -95,21 +95,21 @@ delay and feedback amplitude \, and store it into the same buffer.
 #X connect 18 0 19 0;
 #X connect 19 0 17 0;
 #X connect 20 0 21 0;
-#X connect 21 0 39 0;
+#X connect 21 0 37 0;
 #X connect 22 0 12 0;
 #X connect 23 0 6 0;
-#X connect 24 0 23 5;
-#X connect 25 0 36 0;
-#X connect 26 0 37 0;
-#X connect 27 0 23 6;
-#X connect 30 0 31 0;
-#X connect 31 0 29 0;
-#X connect 32 0 6 0;
-#X connect 33 0 27 1;
-#X connect 34 0 35 0;
-#X connect 35 0 24 1;
-#X connect 36 0 24 0;
-#X connect 37 0 27 0;
-#X connect 38 0 5 0;
-#X connect 39 0 38 0;
-#X connect 58 0 14 0;
+#X connect 24 0 34 0;
+#X connect 25 0 35 0;
+#X connect 28 0 29 0;
+#X connect 29 0 27 0;
+#X connect 30 0 6 0;
+#X connect 31 0 58 1;
+#X connect 32 0 33 0;
+#X connect 33 0 57 1;
+#X connect 34 0 57 0;
+#X connect 35 0 58 0;
+#X connect 36 0 5 0;
+#X connect 37 0 36 0;
+#X connect 56 0 14 0;
+#X connect 57 0 23 5;
+#X connect 58 0 23 6;
