@@ -1,0 +1,37 @@
+#N canvas 446 222 570 637 10;
+#X obj 130 212 line~;
+#X obj 280 320 *~;
+#X obj 280 355 outlet~;
+#X text 20 20 resonating filter;
+#X text 10 140 envelope following;
+#X msg 130 183 \$1 10;
+#X obj 130 130 dbtorms;
+#X obj 130 -22 inlet~ source;
+#X obj 350 -20 inlet~ tone;
+#X text 370 20 same resonating filter;
+#X text 90 450 principle:;
+#X text 90 475 1a- source signal goes through ith bandpass filter;
+#X text 90 492 1b- envelope of this ith frequency band is extracted
+;
+#X text 90 509 2- tone signal goes through the same ith bandpass filter
+;
+#X text 90 526 3- extracted envelope of source & tone are multiplied
+;
+#X obj 130 157 * 60;
+#X obj 130 101 env~ 32;
+#X obj 130 20 cyclone/reson~ 1 \$1 \$2;
+#X obj 130 40 cyclone/reson~ 1 \$1 \$2;
+#X obj 350 45 cyclone/reson~ 1 \$1 \$2;
+#X obj 350 70 cyclone/reson~ 1 \$1 \$2;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 5 0 0 0;
+#X connect 6 0 15 0;
+#X connect 7 0 17 0;
+#X connect 8 0 19 0;
+#X connect 15 0 5 0;
+#X connect 16 0 6 0;
+#X connect 17 0 18 0;
+#X connect 18 0 16 0;
+#X connect 19 0 20 0;
+#X connect 20 0 1 1;
